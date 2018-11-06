@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Ask Prischep</title>   
+    <!-- Bootstrap -->
+    <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/my.css" rel="stylesheet">
+    <link href="static/fontawesome/css/all.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="#"><img src="static/questions.png" width="64" height="64" class="d-inline-block align-top" alt=""></a>
+          <a class="navbar-brand" href="#">AskPrischep</a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+            <form class="form-inline mt-4 mt-md-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Question" aria-label="Search">
+              <button class="btn btn-primary my-2 my-sm-0" type="submit">Ask</button>
+            </form>
+            <ul class="nav navbar-right top" style="margin-left: 80px;">
+              <ul style="margin: 10px" class="nav navbar-right">
+                <a class="nav mg-7" href="#">Log in</a> 
+                <a href="#" class="navbar-link mg-7"> Register</a>
+              </ul>
+            </ul>
+          </div>
+        </nav>
+      </header>
+    </div><!--header-->
+      
+
+      <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-9 blog-main">
+            <br>
+            <h2>Registration</h2>
+            <br>
+            <div class="alert alert-danger" role="alert">
+              Sorry, this email address allready registed!
+            </div>
+            <form class="form-horizontal mg-bot-40">
+            <div class="form-group">
+              <label for="inputEmail3" class="col-md-3 control-label">Login</label>
+              <div class="col-sm-7">
+                <input type="text" required class="form-control" id="inputEmail3" placeholder="Login">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail3" class="col-md-3 control-label">Email</label>
+              <div class="col-sm-7">
+                <input type="email" required class="form-control" id="inputEmail3" placeholder="Email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail3" class="col-md-3 control-label">Nickname</label>
+              <div class="col-sm-7">
+                <input type="nickname" required class="form-control" id="inputEmail3" placeholder="Nickname">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-md-3 control-label">Password</label>
+              <div class="col-sm-7">
+                <input type="password" required class="form-control" id="inputPassword3" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-md-3 control-label">Repeat password</label>
+              <div class="col-sm-7">
+                <input type="password" required class="form-control" id="inputPassword3" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputFile" class="col-md-3 control-label">Upload avatar</label>
+              <div class="col-sm-7">
+                <input type="file">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-7">
+                <button type="submit" class="btn btn-default">Register</button>
+              </div>
+            </div>
+          </form>
+            
+
+          </div><!--Main part-->
+          
+          <aside class="col-md-3 blog-sidebar" style="margin-top: 24px;">
+            <div class="p-3 mb-3 bg-light rounded">
+            <h4 class="font-italic">Popular Tags</h4>
+            <p class="mb-0">perl <font color="red"><b>Python</b></font> Technopark <font color="red"><b>MySQL</b></font> Django Mail.Ru <font color="blue"><strong>Tarantool</strong></font> Firefox Web <font color="green"><strong>Golang</strong></font></p>
+          </div>
+
+          <div class="p-3">
+            <h4 class="font-italic">Best Members</h4>
+            <ol class="list-unstyled mb-0">
+              <li><a href="#">Mr.Freeman</a></li>
+              <li><a href="#">Dr.House</a></li>
+              <li><a href="#">Bender</a></li>
+              <li><a href="#">Mr.Miles</a></li>
+              <li><a href="#">Queen Victoria</a></li>
+              <li><a href="#">Best Orangutang</a></li>
+              <li><a href="#">Bugs Banny</a></li>
+            </ol>
+          </div>
+          </aside>
+        </div> <!--row-->
+      </main>
+
+    <footer class="blog-footer">
+      <p>The site is made by programmer Dmitry Prischep | 2018</p>
+      <p><a href="#">Back to top</a></p>
+    </footer>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="static/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+
+</html>
