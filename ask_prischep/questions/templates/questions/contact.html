@@ -1,0 +1,27 @@
+{% extends "questions/base.html" %}
+
+{% block select %}
+    <li class="nav-item">
+    <a class="nav-link" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="../about/">About</a>
+    </li>
+    <li class="nav-item active">
+    <a class="nav-link" href="../contact/">Contact</a>
+    </li>
+{% endblock %} 
+
+{% block content %}
+    <div class="info-template">
+        <h1>Contacts Us</h1>
+        <h2>Bauman state university</h2>
+        <div class="info-details">
+            Have a question about a this site?<br>
+            You can ask questions on e-mail:<br>
+            {% for mail in email_list %}
+                <p>{{mail}}</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
