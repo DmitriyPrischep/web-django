@@ -1,0 +1,24 @@
+<nav aria-label="Navigation">
+    <ul class="pagination">            
+        {% if question_list.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ question_list.previous_page_number }}">Previous</a></li>
+        {% else %}
+            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+        {% endif %}
+        
+        {% if question_list.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ question_list.previous_page_number }}">{{question_list.previous_page_number}}</a></li>
+        {% endif %}
+        <li class="page-item active"><a class="page-link" href="#">{{question_list.number}}<span class="sr-only">(current)</span></a></li>
+        
+        {% if question_list.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ question_list.next_page_number}}">{{question_list.next_page_number}}</a></li>
+        {% endif %}
+
+        {% if question_list.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ question_list.next_page_number }}">Next</a></li>
+        {% else %}
+            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Next</a></li>
+        {% endif %}
+    </ul>
+</nav>

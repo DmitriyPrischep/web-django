@@ -2,7 +2,7 @@
 {% block header %}
     <div class="row row-offcanvas">
         <div class="col-xs-10 col-sm-9 col-lg-10">
-          <h2>{{question.title}}What is blabla?</h2>
+          <h2>{{question.title}}</h2>
         </div>
         <div class="col-xs-2 col-sm-2">
           <div class="row-offcanvas">
@@ -25,13 +25,11 @@
         <div class="col-2 col-sm-3 col-lg-2">
             <div align=center width="115" height="115">
             {% static "avatar_" as base_url %}
-            <img src="{{base_url}}{{question.id}}3.png" width="115" height="115">
+            <img src="{{base_url}}{{question.id}}.png" width="115" height="115">
             </div>
         </div>
         <div class="col-xs-9 col-sm-7 col-lg-9" style="font-size: 16px;">
-            <p>{{question.text|safe|linebreaks}}DetailView is used for viewing a single object, and ListView is for, well, a list of objects. Usually the pattern is you have a ListView which has links to many individual things (like products), and then each product is viewed through a DetailView.
-
-                    ListView is the one that automatically populates the object_list variable with your queryset.</p>
+            <p>{{question.text|safe|linebreaks}}</p>
             <i class="fas fa-user"></i> by <a href="#"> PrischepDev</a> | 
               <i class="fas fa-calendar-alt"></i> 10.10.2018{{question.date|date:"d-m-Y"}} | 
               <i class="fas fa-comment-alt"></i><a href="#"> 2 Answers</a> | 
@@ -46,7 +44,7 @@
     </div>
 
 
-    {% for post in object_list %}
+    {% for answer in answers %}
     <div class="jumbotron pg-15">
         <div class="row">
             {% load static %}
@@ -54,24 +52,24 @@
             <div class="row row-offcanvas">
                 <div class="col-1 arrow-place">
                 <div><a class="arrow" href="#"><i class="fas fa-angle-up"></i></a></div>
-                <div align="center grey-text">11{{post.likes}}</div>
+                <div align="center grey-text">11{{answer.likes}}</div>
                 <div><a class="arrow" href="#"><i class="fas fa-angle-down"></i></a></div>
                 </div>
                 <div class="col-3 align-self-center mg-top-15">
                     {% static "avatar_" as base_url %}
-                    <img src="{{base_url}}{{post.id}}.png" width="74" height="74">
+                    <img src="{{base_url}}{{answer.id}}.png" width="74" height="74">
                 </div>
             </div>
         </div>
             <div class="col-xs-8 col-sm-9 col-md-9 col-lg-10">
-            <p class="font-size">{{post.text}}</p>
+            <p class="font-size">{{answer.text}}</p>
             </div>
         </div>
         <div class="row">
             <div class="col-lg discpript">
             <p2> 
-            <i class="fas fa-user"></i> by <a href="#"> {{post.author}}</a> | 
-            <i class="fas fa-calendar-alt"></i> {{post.date}} | <!--{{post.date|date:"d-m-Y"}}-->
+            <i class="fas fa-user"></i> by <a href="#"> {{answer.author}}</a> | 
+            <i class="fas fa-calendar-alt"></i> {{answer.date}} | <!--{{post.date|date:"d-m-Y"}}-->
             </p2>
             </div>
         </div>	
