@@ -19,7 +19,7 @@
     <div class="row row-offcanvas">
         <div class="col-1 arrow-place">
           <div><a class="arrow" href="#"><i class="fas fa-angle-up"></i></a></div>
-          <div align="center grey-text">0</div>
+          <div align="center grey-text">{{question.likes}}</div>
           <div><a class="arrow" href="#"><i class="fas fa-angle-down"></i></a></div>
         </div>
         <div class="col-2 col-sm-3 col-lg-2">
@@ -30,12 +30,15 @@
         </div>
         <div class="col-xs-9 col-sm-7 col-lg-9" style="font-size: 16px;">
             <p>{{question.text|safe|linebreaks}}</p>
-            <i class="fas fa-user"></i> by <a href="#"> PrischepDev</a> | 
-              <i class="fas fa-calendar-alt"></i> 10.10.2018{{question.date|date:"d-m-Y"}} | 
-              <i class="fas fa-comment-alt"></i><a href="#"> 2 Answers</a> | 
-              <i class="fas fa-tags"></i> Tags : 
-              <a href="#"><span class="badge badge-primary"> Web</span></a>
-              <a href="#"><span class="badge badge-primary"> PHP </span></a>
+            <i class="fas fa-user"></i> by <a href="#">{{question.author}}</a> | 
+            <i class="fas fa-calendar-alt"></i>{{question.date|date:"d-m-Y"}} | 
+            <i class="fas fa-tags"></i> Tags : 
+            {% for tag in tags_list %}
+                <a href="#"><span class="badge badge-primary"> {{tag.title}} </span></a>
+            {% endfor %}
+
+            <!-- <a href="#"><span class="badge badge-primary"> Web</span></a>
+            <a href="#"><span class="badge badge-primary"> PHP </span></a> -->
         </div>
     </div>
     <div>
@@ -52,7 +55,7 @@
             <div class="row row-offcanvas">
                 <div class="col-1 arrow-place">
                 <div><a class="arrow" href="#"><i class="fas fa-angle-up"></i></a></div>
-                <div align="center grey-text">11{{answer.likes}}</div>
+                <div align="center grey-text">{{answer.likes}}</div>
                 <div><a class="arrow" href="#"><i class="fas fa-angle-down"></i></a></div>
                 </div>
                 <div class="col-3 align-self-center mg-top-15">
@@ -67,10 +70,10 @@
         </div>
         <div class="row">
             <div class="col-lg discpript">
-            <p2> 
-            <i class="fas fa-user"></i> by <a href="#"> {{answer.author}}</a> | 
-            <i class="fas fa-calendar-alt"></i> {{answer.date}} | <!--{{post.date|date:"d-m-Y"}}-->
-            </p2>
+                <p2> 
+                    <i class="fas fa-user"></i> by <a href="#"> {{answer.author}}</a> | 
+                    <i class="fas fa-calendar-alt"></i> {{answer.date|date:"d-m-Y"}}<!--{{post.date|date:"d-m-Y"}}-->
+                </p2>
             </div>
         </div>	
     </div>

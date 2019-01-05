@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from questions.models import Question
+from questions.models import Question, Tag
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.shortcuts import render_to_response, redirect
 
 def contact(request):
     return render(request, 'questions/contact.html', {'email_list' : ['example@mail.ru']})
@@ -9,38 +10,50 @@ def about(request):
     return render(request, 'questions/about.html')
 
 def index(request):
-    question_list = Question.objects.all().order_by("-date")
-    questions = paginte(question_list, request, 2)
-    return render(request, 'questions/question.html', {
-        'question_list' : questions,
-        'header' : 'New questions',
-        'tags' : [
-            'Web', 'PHP', 'Backend'
-        ]
-    })
+    try:
+        if request.GET.get('tag'):
+            questions_list = Question.objects.get_by_tag(request.GET.get('tag'))
+        else:
+            questions_list = Question.objects.all()
+        questions = paginte(questions_list, request, 10)
+    except Question.DoesNotExist:
+        raise Http404()
+    return render(request, 'questions/question.html', {'question_list': questions})
 
 def hot(request):
-    question_list = Question.objects.all().order_by("-date")
-    questions = paginte(question_list, request, 2)
-    return render(request, 'questions/question.html', {
-        'question_list' : questions,
-        'header' : 'Hot questions',
-        'tags' : [
-            'Web', 'PHP', 'Backend'
-        ]
-    })
+    try:
+        questions_list = Question.objects.get_newest()
+        questions = paginte(questions_list, request, 10)
+    except Question.DoesNotExist:
+        raise Http404()
+        # return render(request, 'questions/404.html')
+    return render(request, 'questions/question.html', {'question_list': questions})
 
-def tag(request):
-    question_list = Question.objects.all()
-    questions = paginte(question_list, request, 2)
-    return render(request, 'questions/question.html', {
-        'question_list' : questions,
-        'header' : 'Blabla',
-        'tags' : [
-            'Blabla', 'PHP', 'Backend'
-        ]
-    })
-    
+def popular(request):
+    try:
+        questions_list = Question.objects.get_popular()
+        questions = paginte(questions_list, request, 10)
+    except Question.DoesNotExist:
+        raise Http404()
+    for q in questions:
+        print(q.likes)
+        # return render(request, 'questions/404.html')
+    return render(request, 'questions/question.html', {'question_list': questions})
+
+
+# def tag(request):
+#     print(request.GET.get('tag'))
+#     question_list = Question.objects.get_by_tag(request.GET.get('tag'))
+#     questions = paginte(question_list, request, 2)
+#     # return render(request, 'questions/question.html', {
+#     #     'question_list' : questions,
+#     #     'header' : 'Blabla',
+#     #     'tags' : [
+#     #         'Blabla', 'PHP', 'Backend'
+#     #     ]
+#     # })
+#     return render(request, 'questions/question.html', {'question_list': questions})
+
 def login(request):
     return render(request, 'questions/login.html', {'login' : 'DmitryDev'})
 
