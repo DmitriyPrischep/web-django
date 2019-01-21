@@ -38,16 +38,28 @@
                 </li>
               {% endblock %}              
             </ul>
-            <form class="form-inline mt-4 mt-md-0">
+            <form class="form-inline mt-4 mt-md-0" method="get" action="#">
               <input class="form-control mr-sm-2" type="text" placeholder="Question" aria-label="Search">
-              <button class="btn btn-primary my-2 my-sm-0" type="submit">Ask</button>
+              <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
             </form>
-            <ul class="nav navbar-right top" style="margin-left: 80px;">
-              <ul style="margin: 10px" class="nav navbar-right">
-                <a class="nav mg-7" href="{% url 'login' %}">Log in</a> 
-                <a href="{% url 'signup' %}" class="navbar-link mg-7"> Register</a>
+            {% if user.is_authenticated %}
+              <ul class="nav navbar-right top">
+                <div class="place-avatar">
+                    <img src="{% static "default_avatar.png" %}" width="64" height="64">
+                </div>	
+                <dl class="navbar-right place-data">
+                  <dd><a class="nav" href="#">{{ user.username }}</a></dd>
+                  <dd><a href="{% url 'settings' %}" style="margin-right: 5px" class="navbar-link">Settings</a> <a href="{% url 'logout' %}?from={{request.path}}" class="navbar-link">log out</a></dd>
+                </dl>
               </ul>
-            </ul>
+            {% else %}
+              <ul class="nav navbar-right top" style="margin-left: 80px;">
+                <ul style="margin: 10px" class="nav navbar-right">
+                  <a class="nav mg-7" href="{% url 'login' %}?next={{request.path}}">Log in</a> 
+                  <a href="{% url 'signup' %}" class="navbar-link mg-7"> Register</a>
+                </ul>
+              </ul>
+            {% endif %}
           </div>
         </nav>
       </header>
@@ -57,7 +69,7 @@
       <main role="main" class="container">
         <div class="row">
           <div class="col-md-9 blog-main">
-          <br>
+          
           {% block header %}
           {% endblock %}
 
@@ -99,7 +111,7 @@
       </main>
 
     <footer class="blog-footer">
-      <p>The site is made by programmer Dmitry Prischep | 2018</p>
+      <p id="Bottom">The site is made by programmer Dmitry Prischep | 2018</p>
       <p><a href="#">Back to top</a></p>
     </footer>
 

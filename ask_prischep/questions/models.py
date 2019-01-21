@@ -3,6 +3,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 import datetime
+import random
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -23,7 +24,8 @@ class TagManager(models.Manager):
         try:
             tag = self.get_by_title(title)
         except Tag.DoesNotExist:
-            tag = self.create(title=title, color=choice(Tag.COLORS)[0])
+            color_tag = random.choice(Tag.COLORS)[0]
+            tag = self.create(title=title, color=color_tag)
         return tag
 
     def get_popular(self):
@@ -56,8 +58,6 @@ class Tag(models.Model):
 
     def get_url(self):
         return '/?tag=' + self.title + '&page=1'
-        # return reverse(kwargs={'tag' : self.title})
-
 
 class QuestionManager(models.Manager):
     def get_by_tag(self, tag):
@@ -85,7 +85,10 @@ class Question(models.Model):
         return Answer.objects.filter(question_id=self.id)
 
     def get_url(self):
-         return '/question{question_id}/'.format(question_id=self.id)
+         return '/question/{question_id}/'.format(question_id=self.id)
+    
+    def count_answers(self):
+        return Answer.objects.filter(question_id=self.id).count()
 
 class Answer(models.Model):
     question = models.ForeignKey(Question, models.CASCADE) #, related_name="answers"
@@ -94,6 +97,9 @@ class Answer(models.Model):
     date = models.DateTimeField(default=timezone.now)
     correct = models.BooleanField(default=False)
     likes = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ['-correct', '-date', '-likes']
 
     def get_url(self):
         return self.question.get_url()

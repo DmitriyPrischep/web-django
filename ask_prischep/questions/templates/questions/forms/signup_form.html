@@ -1,0 +1,20 @@
+<form enctype="multipart/form-data" class="form-horizontal mg-bot-40" method="post" action="{% url 'signup' %}">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="form-group">
+            <label class="col-md-5 control-label"> {{ field.label }}</label>
+            <div class="col-sm-7">
+                {{ field }}
+            </div>
+            {% for error in field.errors %}
+                <span class="alert alert-danger" role="alert">{{ field.errors }}</span>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-7">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+    </div>
+</form>
+    

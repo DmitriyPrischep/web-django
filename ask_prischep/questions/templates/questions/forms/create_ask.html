@@ -1,0 +1,20 @@
+<form class="form-horizontal mg-bot-40" method="post" action="{% url 'ask' %}">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="form-group">
+            <label class="col-md-5 control-label"> {{ field.label }}</label>
+            <div class="col-sm-9">
+                {{ field }}
+            </div>
+            {% for error in field.errors %}
+                <span class="help-block col-sm-offset-4 col-sm-8">{{ error }}</span>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-7">
+                <button type="button" class="btn btn-default" onclick="window.location='{% url 'index' %}';">Cancel</button>
+                <button type="submit" class="btn btn-primary">Ask!</button>
+            </div>
+        </div>
+</form>         

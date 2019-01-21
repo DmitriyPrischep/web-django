@@ -1,5 +1,8 @@
-*/.__pycache__/
-*/.migrations/
+__pycache__/*
+*/migrations/*
+/migrations/
+*.pyc
 500.html
 404.html
 hello.py
+*.sqlite3

@@ -1,0 +1,23 @@
+<form class="form-horizontal mg-bot-40" method="post" action="{% url 'login' %}?next={{ request.GET.next }}">
+    {% csrf_token %}
+    {% include 'questions/forms/horizontal_form.html' %}
+    <!-- <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-5">
+        <div class="checkbox">
+            <label>
+            <input type="checkbox"> Remember me
+            </label>
+        </div>
+        </div>
+    </div> -->
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-5">
+            <button type="submit" class="btn btn-primary">Log in</button>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-5">
+            <a href="{% url 'signup' %}">Create new account</a>
+        </div>
+    </div>
+</form>
